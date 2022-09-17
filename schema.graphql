@@ -1,0 +1,43 @@
+type Query {
+    greeting:String
+    students:[Student]
+    studentById(id:ID!):Student
+    sayHello(name:String!):String
+    settFavouriteColor(color:ColorType):String
+}
+
+enum ColorType {
+    RED
+    BLUE
+    GREENN
+}
+
+type College {
+    id:ID!
+    name:String
+    location:String
+    rating:Float
+}
+
+type Student {
+    id:ID!
+    firstName:String
+    lastName:String
+    password:String
+    collegeId:String
+    fullName:String
+    college:College
+}
+
+type Mutation {
+    addStudent_returns_object(collegeId:ID,firstName:String,lastName:String):Student
+    createStudent(collegeId:ID,firstName:String,lastName:String):String
+    signUp(input:SignUpInput):String
+}
+
+input SignUpInput {
+    email:String!
+    password:String!
+    firstName:String!
+}
+
